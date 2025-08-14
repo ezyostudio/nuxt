@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.6.2](https://github.com/shuriken-ui/nuxt/compare/v3.6.1...v3.6.2) (2025-08-14)
+
+
+### ⚙️ Tests
+
+* add base avatar tests ([#129](https://github.com/shuriken-ui/nuxt/issues/129)) ([9610fff](https://github.com/shuriken-ui/nuxt/commit/9610fffae1f46b5310754e4a6ab8a19eff0b83da))
+* add more tests ([#130](https://github.com/shuriken-ui/nuxt/issues/130)) ([4d0917d](https://github.com/shuriken-ui/nuxt/commit/4d0917d9747d5e2aabe865dee8d410f4849ba5ff))
+* basic vitest and coverage integration ([ff5dce0](https://github.com/shuriken-ui/nuxt/commit/ff5dce0625afce287452a5bb80a32873236ded81))
+* enable corepack ([b501df7](https://github.com/shuriken-ui/nuxt/commit/b501df7b10c7168e0a99936dc9ff529b738d4ad3))
+
+
+### 🩹 Bug Fixes
+
+* improve regex escaping in useNinjaMark function ([72f1714](https://github.com/shuriken-ui/nuxt/commit/72f171404d9903aa534fcbf6fd6ee1f2f25bd93f))
+* migrate to eslint v9 ([03f5b32](https://github.com/shuriken-ui/nuxt/commit/03f5b325dcbe63b2b89adb6bb3fdf1b4a253f9e1))
+
 ### [3.6.1](https://github.com/shuriken-ui/nuxt/compare/v3.6.0...v3.6.1) (2024-10-07)
 
 
