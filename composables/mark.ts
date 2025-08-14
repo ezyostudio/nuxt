@@ -2,6 +2,10 @@ import type { MaybeRefOrGetter } from 'vue'
 
 import { escapeHtml } from '@vue/shared'
 
+function escapeRegExp(literal: string): string {
+  return literal.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
 export function useNinjaMark(
   _text?: MaybeRefOrGetter<string | undefined>,
   _search?: MaybeRefOrGetter<string | undefined>,
@@ -22,7 +26,7 @@ export function useNinjaMark(
       return escapeHtml(txt)
     }
 
-    const regex = new RegExp(srch, 'gi')
+    const regex = new RegExp(escapeRegExp(srch), 'gi')
 
     return txt.replace(regex, (part) => {
       return `<mark class="${classes.value}">${escapeHtml(part)}</mark>`
