@@ -84,7 +84,7 @@ const hobbies: Hobby[] = [
   },
   {
     id: 5,
-    name: 'Karaoke',
+    name: 'Karaoke (with friends)',
     text: 'singing with friends',
     icon: 'ph:microphone-stage-duotone',
   },

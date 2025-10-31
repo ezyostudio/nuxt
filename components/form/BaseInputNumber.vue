@@ -177,8 +177,12 @@ function looseToNumber(val: any) {
   return Number.isNaN(n) ? val : n
 }
 
-const [modelValue, modelModifiers] = defineModel<number, 'lazy'>({
+const [modelValue, modelModifiers] = defineModel<number, 'lazy' | 'raw'>({
   set(value) {
+    if (modelModifiers.raw) {
+      return value
+    }
+
     return looseToNumber(value)
   },
 })
@@ -203,9 +207,9 @@ const sizes = {
 }
 
 const contrasts = {
-  default: 'nui-input-number-default',
+  'default': 'nui-input-number-default',
   'default-contrast': 'nui-input-number-default-contrast',
-  muted: 'nui-input-number-muted',
+  'muted': 'nui-input-number-muted',
   'muted-contrast': 'nui-input-number-muted-contrast',
 }
 
@@ -236,7 +240,8 @@ const placeholder = computed(() => {
 })
 
 const floatPrecision = computed(() => {
-  if (!Number.isFinite(props.step) || Number.isNaN(props.step)) return 0
+  if (!Number.isFinite(props.step) || Number.isNaN(props.step))
+    return 0
   let exp = 1
   let precision = 0
   while (Math.round(props.step * exp) / exp !== props.step) {
@@ -249,8 +254,8 @@ const floatPrecisionExp = computed(() => 10 ** floatPrecision.value)
 const stepAbs = computed(() => Math.abs(props.step))
 
 function clamp(value: number) {
-  const rounded =
-    Math.round(value * floatPrecisionExp.value) / floatPrecisionExp.value
+  const rounded
+    = Math.round(value * floatPrecisionExp.value) / floatPrecisionExp.value
 
   return Math.max(
     Math.min(rounded, props.max ?? Number.POSITIVE_INFINITY),
@@ -259,7 +264,8 @@ function clamp(value: number) {
 }
 
 function increment() {
-  if (props.disabled) return
+  if (props.disabled)
+    return
 
   if (modelValue.value === undefined) {
     modelValue.value = 0
@@ -272,7 +278,8 @@ function increment() {
 }
 
 function decrement() {
-  if (props.disabled) return
+  if (props.disabled)
+    return
 
   if (modelValue.value === undefined) {
     modelValue.value = 0
@@ -286,7 +293,8 @@ function decrement() {
 
 let incrementInterval: any
 function startIncrement() {
-  if (props.disabled) return
+  if (props.disabled)
+    return
 
   increment()
   let i = 0
@@ -306,7 +314,8 @@ function stopIncrement() {
 
 let decrementInterval: any
 function startDecrement() {
-  if (props.disabled) return
+  if (props.disabled)
+    return
 
   decrement()
   let i = 0
@@ -332,7 +341,6 @@ onBeforeUnmount(() => {
 if (import.meta.dev) {
   const slots = useSlots()
   if (props.labelFloat && 'label' in slots) {
-    // eslint-disable-next-line no-console
     console.warn(
       '[ninja-ui][base-input-number] The "label-float" property is not compatible with the label slot, use the label property instead.',
     )
@@ -357,8 +365,8 @@ if (import.meta.dev) {
   >
     <label
       v-if="
-        ('label' in $slots && !props.labelFloat) ||
-        (props.label && !props.labelFloat)
+        ('label' in $slots && !props.labelFloat)
+          || (props.label && !props.labelFloat)
       "
       class="nui-input-number-label"
       :for="id"
@@ -380,7 +388,7 @@ if (import.meta.dev) {
           :placeholder="placeholder"
           :inputmode="props.inputmode"
           :disabled="props.disabled"
-        />
+        >
         <input
           v-else
           :id="id"
@@ -393,11 +401,11 @@ if (import.meta.dev) {
           :placeholder="placeholder"
           :inputmode="props.inputmode"
           :disabled="props.disabled"
-        />
+        >
         <label
           v-if="
-            ('label' in $slots && props.labelFloat) ||
-            (props.label && props.labelFloat)
+            ('label' in $slots && props.labelFloat)
+              || (props.label && props.labelFloat)
           "
           class="nui-label-float"
           :for="id"
@@ -421,20 +429,20 @@ if (import.meta.dev) {
           <button
             type="button"
             aria-label="Decrement"
+            :disabled="props.disabled"
             @pointerdown="startDecrement"
             @pointerout="stopDecrement"
             @pointerup="stopDecrement"
-            :disabled="props.disabled"
           >
             <Icon :name="props.iconDecrement" />
           </button>
           <button
             type="button"
             aria-label="Increment"
+            :disabled="props.disabled"
             @pointerdown="startIncrement"
             @pointerout="stopIncrement"
             @pointerup="stopIncrement"
-            :disabled="props.disabled"
           >
             <Icon :name="props.iconIncrement" />
           </button>

@@ -173,6 +173,12 @@ export default defineNuxtSchema({
          */
         buttonColor: 'default',
         /**
+         * The size of the dropdown button.
+         *
+         * @type {'sm' | 'md' | 'lg' | 'xl'}
+         */
+        buttonSize: 'md',
+        /**
          * The color of the dropdown.
          *
          * @type {'default' | 'default-contrast' | 'muted' | 'muted-contrast' | 'none'}
@@ -328,15 +334,15 @@ export default defineNuxtSchema({
           }}
          */
         defaultIcons: {
-          muted: 'akar-icons:info-fill',
+          'muted': 'akar-icons:info-fill',
           'muted-contrast': 'akar-icons:info-fill',
-          default: 'akar-icons:info-fill',
+          'default': 'akar-icons:info-fill',
           'default-contrast': 'akar-icons:info-fill',
-          info: 'akar-icons:info-fill',
-          success: 'carbon:checkmark-filled',
-          warning: 'ci:warning',
-          danger: 'ph:warning-octagon-fill',
-          primary: 'akar-icons:info-fill',
+          'info': 'akar-icons:info-fill',
+          'success': 'carbon:checkmark-filled',
+          'warning': 'ci:warning',
+          'danger': 'ph:warning-octagon-fill',
+          'primary': 'akar-icons:info-fill',
         },
       },
       BasePagination: {

@@ -2,6 +2,74 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.6.2](https://github.com/shuriken-ui/nuxt/compare/v3.6.1...v3.6.2) (2025-08-14)
+
+
+### ⚙️ Tests
+
+* add base avatar tests ([#129](https://github.com/shuriken-ui/nuxt/issues/129)) ([9610fff](https://github.com/shuriken-ui/nuxt/commit/9610fffae1f46b5310754e4a6ab8a19eff0b83da))
+* add more tests ([#130](https://github.com/shuriken-ui/nuxt/issues/130)) ([4d0917d](https://github.com/shuriken-ui/nuxt/commit/4d0917d9747d5e2aabe865dee8d410f4849ba5ff))
+* basic vitest and coverage integration ([ff5dce0](https://github.com/shuriken-ui/nuxt/commit/ff5dce0625afce287452a5bb80a32873236ded81))
+* enable corepack ([b501df7](https://github.com/shuriken-ui/nuxt/commit/b501df7b10c7168e0a99936dc9ff529b738d4ad3))
+
+
+### 🩹 Bug Fixes
+
+* improve regex escaping in useNinjaMark function ([72f1714](https://github.com/shuriken-ui/nuxt/commit/72f171404d9903aa534fcbf6fd6ee1f2f25bd93f))
+* migrate to eslint v9 ([03f5b32](https://github.com/shuriken-ui/nuxt/commit/03f5b325dcbe63b2b89adb6bb3fdf1b4a253f9e1))
+
+### [3.6.1](https://github.com/shuriken-ui/nuxt/compare/v3.6.0...v3.6.1) (2024-10-07)
+
+
+### 🩹 Bug Fixes
+
+* **BaseAvatar:** inherit attributes to image ([7d149ca](https://github.com/shuriken-ui/nuxt/commit/7d149caaa585e34b6816d66d83b0bcb9c62b8035))
+* **BaseProgressCircle:** reactivity when not animated ([f601270](https://github.com/shuriken-ui/nuxt/commit/f6012708f9a03cfd5de386dba0bdd93a3b23de98))
+
+## [3.6.0](https://github.com/shuriken-ui/nuxt/compare/v3.5.0...v3.6.0) (2024-08-05)
+
+
+### 🚀 Features
+
+* **BaseDropdown:** add disabled property ([b7b73d2](https://github.com/shuriken-ui/nuxt/commit/b7b73d29649752e5902de6f0b11759ef70c94881))
+
+## [3.5.0](https://github.com/shuriken-ui/nuxt/compare/v3.4.1...v3.5.0) (2024-08-04)
+
+
+### 🚀 Features
+
+* **BaseAutocomplete:** add float-options property ([841eed4](https://github.com/shuriken-ui/nuxt/commit/841eed4aaf425ce609f105c1fcc5f62a27496980))
+* **BaseInputNumber:** add raw model modifer to prevent float parsing ([d9ec94b](https://github.com/shuriken-ui/nuxt/commit/d9ec94bbfa3037f411304c1bcd1ab561715fd7e4))
+* **BaseListbox:** add float-options property ([0676d03](https://github.com/shuriken-ui/nuxt/commit/0676d03d00c98693f1d21781ea26cd90381f740a))
+
+### [3.4.1](https://github.com/shuriken-ui/nuxt/compare/v3.4.0...v3.4.1) (2024-08-04)
+
+
+### 🩹 Bug Fixes
+
+* **BaseAutocomplete:** expose refrence to input element ([a4874f4](https://github.com/shuriken-ui/nuxt/commit/a4874f49cf12dd4dd454c71c34bbd5557853a523))
+* **BaseDropdown:** button size prop not applied ([448914d](https://github.com/shuriken-ui/nuxt/commit/448914d03c3147a8a9c4f5d1a7a5fe24af1392d7)), closes [#128](https://github.com/shuriken-ui/nuxt/issues/128)
+
+## [3.4.0](https://github.com/shuriken-ui/nuxt/compare/v3.3.0...v3.4.0) (2024-07-25)
+
+
+### 🚀 Features
+
+* migrate nuxt-icon to @nuxt/icon ([8c5a1a1](https://github.com/shuriken-ui/nuxt/commit/8c5a1a1a8d77356fc91bfee8f8e7d771d8f3f1c8))
+
+## [3.3.0](https://github.com/shuriken-ui/nuxt/compare/v3.2.1...v3.3.0) (2024-07-16)
+
+
+### 💅 Refactors
+
+* **tailwind-config:** provide config through tailwind.config ([#123](https://github.com/shuriken-ui/nuxt/issues/123)) ([5ba5bf4](https://github.com/shuriken-ui/nuxt/commit/5ba5bf47e615014c80fbd38545414b159a19880f))
+
+
+### 🚀 Features
+
+* **BaseButton:** add buttonSize property ([fe5227f](https://github.com/shuriken-ui/nuxt/commit/fe5227f40a9924567d7e87497b534f759d7b8de4))
+* **BaseDropdown:** add floatOptions props to control the underlying Float component ([#126](https://github.com/shuriken-ui/nuxt/issues/126)) ([761f583](https://github.com/shuriken-ui/nuxt/commit/761f58395c89d6582c6d68b63b0de0a91beca0e8))
+
 ### [3.2.1](https://github.com/shuriken-ui/nuxt/compare/v3.2.0...v3.2.1) (2024-06-07)
 
 ## [3.2.0](https://github.com/shuriken-ui/nuxt/compare/v3.1.6...v3.2.0) (2024-06-06)

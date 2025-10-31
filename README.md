@@ -8,9 +8,12 @@
 
 
 <p align="center">
-  <a href="https://shurikenui.com" title="Shuriken UI website"><strong>shurikenui.com</strong></a> | 
+  <a href="https://v3.shurikenui.com" title="Shuriken UI website"><strong>v3.shurikenui.com</strong></a> | 
   by <a href="https://cssninja.io" title="Our official website"><strong>cssninja.io</strong></a>
 </p>
+
+> [!IMPORTANT]
+> Looking for Shuriken UI v4, with tailwind v4 support? Check https://github.com/shuriken-ui/shuriken-ui
 
 ---
 

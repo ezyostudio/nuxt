@@ -1,10 +1,19 @@
 <script setup lang="ts">
+defineOptions({
+  inheritAttrs: false,
+})
+
 const props = withDefaults(
   defineProps<{
     /**
      * The URL of the image to display.
      */
     src?: string
+
+    /**
+     * The alt text of the image.
+     */
+    alt?: string
 
     /**
      * The URL of a dark version of the image to display when the component is in dark mode.
@@ -56,7 +65,7 @@ const props = withDefaults(
      * Defines the color of the avatar
      *
      * @since 3.0.0
-     * @default 'default'
+     * @default 'muted'
      */
     color?:
       | 'white'
@@ -169,12 +178,12 @@ const rings = {
 }
 
 const sizes = {
-  xxs: 'nui-avatar-xxs',
-  xs: 'nui-avatar-xs',
-  sm: 'nui-avatar-sm',
-  md: 'nui-avatar-md',
-  lg: 'nui-avatar-lg',
-  xl: 'nui-avatar-xl',
+  'xxs': 'nui-avatar-xxs',
+  'xs': 'nui-avatar-xs',
+  'sm': 'nui-avatar-sm',
+  'md': 'nui-avatar-md',
+  'lg': 'nui-avatar-lg',
+  'xl': 'nui-avatar-xl',
   '2xl': 'nui-avatar-2xl',
   '3xl': 'nui-avatar-3xl',
   '4xl': 'nui-avatar-4xl',
@@ -204,12 +213,12 @@ const masks = {
       size && sizes[size],
       rounded && radiuses[rounded],
       !props.src && color && colors[color],
-      props.mask &&
-        (props.rounded === 'none' || rounded === 'none') &&
-        `nui-avatar-mask ${masks[props.mask]}`,
-      props.ring &&
-        (props.ring === true
-          ? `nui-avatar-ring ${rings['primary']}`
+      props.mask
+        && (props.rounded === 'none' || rounded === 'none')
+        && `nui-avatar-mask ${masks[props.mask]}`,
+      props.ring
+        && (props.ring === true
+          ? `nui-avatar-ring ${rings.primary}`
           : `nui-avatar-ring ${rings[props.ring]}`),
       props.classes?.wrapper,
     ]"
@@ -218,6 +227,7 @@ const masks = {
       <slot>
         <img
           v-if="props.src"
+          v-bind="$attrs"
           :src="props.src"
           class="nui-avatar-img"
           :class="[
@@ -225,14 +235,15 @@ const masks = {
             props.srcDark ? 'dark:hidden' : '',
             props.classes?.img,
           ]"
-        />
+        >
 
         <img
           v-if="props.src && props.srcDark"
+          v-bind="$attrs"
           :src="props.srcDark"
           class="nui-avatar-img hidden dark:block"
           :class="[rounded && radiuses[rounded], props.classes?.img]"
-        />
+        >
 
         <span v-if="!props.src" class="nui-avatar-text">
           {{ props.text }}
@@ -251,7 +262,7 @@ const masks = {
           :src="props.badgeSrc"
           class="nui-badge-img"
           alt=""
-        />
+        >
       </slot>
     </div>
 
@@ -259,9 +270,9 @@ const masks = {
       v-if="props.dot"
       class="nui-avatar-dot"
       :class="[
-        props.dot === true ? dots['primary'] : dots[props.dot],
+        props.dot === true ? dots.primary : dots[props.dot],
         props.classes?.dot,
       ]"
-    ></span>
+    />
   </div>
 </template>

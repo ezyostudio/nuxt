@@ -20,6 +20,11 @@ const props = withDefaults(
     fixed?: boolean
 
     /**
+     * Used a fixed strategy to float the component
+     */
+    disabled?: boolean
+
+    /**
      * The color of the button.
      *
      * @default 'default'
@@ -40,7 +45,14 @@ const props = withDefaults(
       | 'none'
 
     /**
-     * The color of the dropdown.
+     * The size of the button.
+     *
+     * @default 'md'
+     */
+    buttonSize?: 'sm' | 'md' | 'lg' | 'xl'
+
+    /**
+     * The color of the dropdown.buttonSize
      *
      * @default 'default'
      */
@@ -125,6 +137,7 @@ const props = withDefaults(
   {
     variant: undefined,
     buttonColor: undefined,
+    buttonSize: undefined,
     color: undefined,
     rounded: undefined,
     orientation: undefined,
@@ -139,6 +152,7 @@ const props = withDefaults(
 )
 
 const buttonColor = useNuiDefaultProperty(props, 'BaseDropdown', 'buttonColor')
+const buttonSize = useNuiDefaultProperty(props, 'BaseDropdown', 'buttonSize')
 const color = useNuiDefaultProperty(props, 'BaseDropdown', 'color')
 const placement = useNuiDefaultProperty(props, 'BaseDropdown', 'placement')
 const rounded = useNuiDefaultProperty(props, 'BaseDropdown', 'rounded')
@@ -159,32 +173,32 @@ const radiuses = {
 }
 
 const colors = {
-  default: 'nui-menu-default',
+  'default': 'nui-menu-default',
   'default-contrast': 'nui-menu-default-contrast',
-  muted: 'nui-menu-muted',
+  'muted': 'nui-menu-muted',
   'muted-contrast': 'nui-menu-muted-contrast',
-  primary: 'nui-menu-primary',
-  info: 'nui-menu-info',
-  success: 'nui-menu-success',
-  warning: 'nui-menu-warning',
-  danger: 'nui-menu-danger',
-  none: '',
+  'primary': 'nui-menu-primary',
+  'info': 'nui-menu-info',
+  'success': 'nui-menu-success',
+  'warning': 'nui-menu-warning',
+  'danger': 'nui-menu-danger',
+  'none': '',
 }
 
 const textColors = {
-  default: 'text-inherit',
+  'default': 'text-inherit',
   'default-contrast': 'text-inherit',
-  muted: 'text-muted-500',
+  'muted': 'text-muted-500',
   'muted-contrast': 'text-muted-500',
-  primary: 'text-primary-500',
-  info: 'text-info-500',
-  success: 'text-success-500',
-  warning: 'text-warning-500',
-  danger: 'text-danger-500',
-  light: 'text-muted-100',
-  dark: 'text-muted-900 dark:text-muted-100',
-  black: 'text-black dark:text-white',
-  none: '',
+  'primary': 'text-primary-500',
+  'info': 'text-info-500',
+  'success': 'text-success-500',
+  'warning': 'text-warning-500',
+  'danger': 'text-danger-500',
+  'light': 'text-muted-100',
+  'dark': 'text-muted-900 dark:text-muted-100',
+  'black': 'text-black dark:text-white',
+  'none': '',
 }
 </script>
 
@@ -211,12 +225,14 @@ const textColors = {
         :z-index="20"
         v-bind="floatOptions"
       >
-        <MenuButton as="template">
+        <MenuButton as="template" :disabled="props.disabled">
           <slot name="button" v-bind="{ open, close }">
             <BaseButton
               v-if="variant === 'button' || props.variant === 'button'"
+              :size="props.buttonSize ? props.buttonSize : buttonSize"
               :color="props.buttonColor ? props.buttonColor : buttonColor"
               :rounded="props.rounded ? props.rounded : rounded"
+              :disabled="props.disabled"
               class="!pe-3 !ps-4"
             >
               <slot name="label" v-bind="{ open, close }">
@@ -232,6 +248,7 @@ const textColors = {
               v-else-if="props.variant === 'context'"
               type="button"
               class="nui-context-button nui-focus"
+              :disabled="props.disabled"
             >
               <span class="nui-context-button-inner">
                 <Icon
@@ -244,8 +261,8 @@ const textColors = {
             <button
               v-else-if="props.variant === 'text'"
               type="button"
-              :class="[
-                'nui-text-button nui-focus',
+              :disabled="props.disabled"
+              class="nui-text-button nui-focus" :class="[
                 buttonColor && textColors[buttonColor],
               ]"
             >
@@ -283,7 +300,7 @@ const textColors = {
             </div>
           </div>
           <div class="nui-menu-content" :class="props.classes?.content">
-            <slot v-bind="{ open, close }"></slot>
+            <slot v-bind="{ open, close }" />
           </div>
         </MenuItems>
       </Float>
